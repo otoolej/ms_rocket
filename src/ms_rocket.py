@@ -15,7 +15,7 @@ for Preterm EEG Inter-burst Detection' European Signal Poces Conf (EUSIPCO), 202
 
 John M. O'Toole, University College Cork 
 Started: 25-05-2021 
-last update: Time-stamp: <2021-07-06 10:29:23 (otoolej)>
+last update: Time-stamp: <2021-07-06 18:09:42 (otoolej)>
 """
 import numpy as np
 from numba import njit, prange
@@ -357,84 +357,3 @@ def apply_kernels(X, kernels):
     return Y
 
 
-
-@njit(
-    "f8[:,:](f8[:,:], Tuple((f8[::1], i4[:], f8[:], i4[:], u1[:])), b1, b1, b1)",
-    parallel=True,
-    fastmath=True
-)
-def testing_apply_kernels(X, kernels, do_scale=True, do_high_low_freq=True, do_dilation=False):
-    """
-    convolve the kernels with the signal segments
-
-    Use this function if want to combine different aspects for the multi-scale version. 
-    See reference [2] above for details.
-    e.g. testing_apply_kernels(X, kerns, True, True, False) is the same as 
-    apply_kernels(X, kerns)
-    
-
-    Parameters
-    ----------
-    X: ndarray (M x N) (float64)
-        M segments of the time-domain signal
-    kernels : tuple (5 x ndarray) (float64, int32, float64, int32, unit8)
-        random kernels: (weights, l_kerns, bias, scale, high_freq)
-    do_scale : bool (byte)
-         include scale, i.e. do the MA filtering
-    do_high_low_freq : bool (byte)
-         include the high frequency component, in addition to the low-frequency one
-    do_dilation : bool (byte)
-         include dilation, which downsamples the low-frequency component after MA filtering
-
-    Returns
-    -------
-    Y : ndarray (M x 2*len(l_kerns))
-        2 features from the convolution for each segment in X
-    """
-    weights, l_kerns, bias, scale, high_freq = kernels
-
-    n_segs, n_epoch = X.shape
-    n_kernels = len(l_kerns)
-
-    # what scales are involved?
-    all_scales = np.unique(scale)
-    n_scales = len(all_scales)
-
-    # 2 features per kernel:
-    Y = np.zeros((n_segs, n_kernels * 2), dtype=np.float64)
-
-    for n in prange(n_segs):
-
-        # for weights and features:
-        istart1 = 0
-        istart2 = 0
-
-        # do the filtering (MA) here and store:
-        if do_scale:
-            X_scales = do_ma_filtering_all(X[n], all_scales, n_epoch, n_scales)
-
-        
-        for m in range(n_kernels):
-
-            if do_scale:
-                ip = get_index(all_scales, scale[m])
-                if high_freq[m] == 1 and scale[m] > 1 and do_high_low_freq:
-                    x_epoch = X[n] - X_scales[:, ip]
-                else:
-                    if do_dilation:
-                        x_epoch = X_scales[::scale[m], ip]
-                    else:
-                        x_epoch = X_scales[:, ip]
-
-            else:
-                x_epoch = X[n]
-
-            iend1 = istart1 + l_kerns[m]
-            iend2 = istart2 + 2
-            Y[n, istart2:iend2] = conv_get_max_ppv(x_epoch, weights[istart1:iend1], bias[m])
-
-
-            istart1 = iend1
-            istart2 = iend2
-
-    return Y

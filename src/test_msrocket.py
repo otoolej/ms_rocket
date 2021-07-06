@@ -10,7 +10,7 @@ requires: numpy, matplotlib, random, sklearn, ms_rocket
 
 John M. O' Toole, University College Cork
 Started: 06-07-2021
-last update: Time-stamp: <2021-07-06 17:37:10 (otoolej)>
+last update: Time-stamp: <2021-07-06 18:06:59 (otoolej)>
 """
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -20,7 +20,7 @@ import ms_rocket as ms
 
 
 def gen_LFM_signal(N=1024):
-    """ generate a linear-frequency modulated signal """
+    """ generate a linear frequency-modulated signal """
 
     # start and stop frequencies:
     fstart = 0.1
@@ -33,7 +33,7 @@ def gen_LFM_signal(N=1024):
 
 
 def gen_data(N=1024):
-    """ generate a mock dataset with a linear-frequency modulated signal in noise """
+    """ generate a mock dataset with a linear frequency-modulated (LFM) signal in noise """
 
     # 1. generate LFM signal with additive white-Gaussian noise:
     x = gen_LFM_signal(N)
@@ -66,7 +66,7 @@ def gen_data(N=1024):
 
 
 def example_ms_rocket():
-    """ example of msROCKET to detect time-varying sinusoidal components in noise """
+    """ example of msROCKET for detection of time-varying sinusoidal components in noise """
 
     # -------------------------------------------------------------------
     #  1. generate the data:

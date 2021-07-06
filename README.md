@@ -1,4 +1,4 @@
-# msROCKET: Random convolutional kernels with multi-scale decomposition
+# msROCKET: random convolutional kernels with multi-scale decomposition
 
 Python code which extends the ROCKET method to include multi-scale decomposition. See
 following reference for more details:
@@ -35,15 +35,15 @@ Developed and tested with Python 3.9 and:
 + NumPy (version 1.19.5)
 + Numba (version 0.53.1)
 
-May work with older versions of but not tested.
+May work with older versions but not tested.
 
 
 ## Install
 Options to install:
-+ download the repository and copy the module `src/ms_rocket.py` to where ever you want.
++ download the repository and copy the module `src/ms_rocket.py` to where its needed.
 + or, download and install an editable version with `pip`:
 
-within this directory:
+within this directory, do:
 ```python
 pip3 install -e .
 ```
@@ -57,7 +57,7 @@ pip3 install git+https://github.com/otoolej/ms_rocket
 
 
 ## Examples
-Generate the random kernels and convolve with the input signal
+Generate random kernels and convolve with the input signal
 
 ```python
 import numpy as np
@@ -74,20 +74,20 @@ X_train = ms.apply_kernels(X, kerns)
 ```
 
 The matrix `X_train` is the feature matrix of size `800 x 20,000`, as 2 features for each
-kernel. This feature set is then combined using a linear classifier, e.g. using ridge regression.
+kernel. This feature set is then combined using a linear classifier, e.g. ridge regression.
 
 
 ### Train and testing a classifier
 
-This example shows to use msROCKET for a detection problem. Here we detect a
+The following is an example of using msROCKET for a detection problem. Here we detect a
 frequency-modulated signal in white Gaussian noise.
 
 Requires `sklearn.linear_model.RidgeRegression` and `sklearn.model_selection.train_test_split`.
 
 
-From the file `src/test_msrocket.py`:
+Taken from the file `src/test_msrocket.py`:
 ```python
- """ example of msROCKET to detect time-varying sinusoidal components in noise """
+ """ example of msROCKET for detection of time-varying sinusoidal components in noise """
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import RidgeClassifier
