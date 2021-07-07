@@ -4,7 +4,7 @@ Python code which extends the ROCKET method to include multi-scale decomposition
 following reference for more details:
 
 `C Lundy & JM O'Toole (2021) 'Random Convolution Kernels with Multi-Scale Decomposition for
-Preterm EEG Inter-burst Detection' European Signal Poces Conf (EUSIPCO), 2021.`
+Preterm EEG Inter-burst Detection' European Signal Processing Conference (EUSIPCO), 2021.`
 
 Please cite the above reference if using this code to generate new results.
 
@@ -61,7 +61,7 @@ Generate random kernels and convolve with the input signal
 
 ```python
 import numpy as np
-import ms_kernel_fns as ms
+from ms_kernel import ms_kernel_fns as ms
 
 # 1. generate random test signal: 800 segments of length-128
 X = np.random.randn(800, 128)
@@ -92,7 +92,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import RidgeClassifier
 
-from example_msrocket import gen_data
+from ms_kernel_fns.example_msrocket import gen_data
 import ms_kernel_fns as ms
 
 

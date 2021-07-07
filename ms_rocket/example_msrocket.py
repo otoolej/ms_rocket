@@ -2,21 +2,21 @@
 Testing functions for msROCKET. See [1] for details.
 
 [1] C Lundy & JM O'Toole (2021) 'Random Convolution Kernels with Multi-Scale Decomposition 
-for Preterm EEG Inter-burst Detection' European Signal Poces Conf (EUSIPCO), 2021.
+for Preterm EEG Inter-burst Detection' European Signal Proc Conf (EUSIPCO), 2021.
 
 requires: numpy, sklearn, ms_rocket
 
 
 John M. O' Toole, University College Cork
 Started: 06-07-2021
-last update: Time-stamp: <2021-07-07 15:31:56 (otoolej)>
+last update: Time-stamp: <2021-07-07 15:58:14 (otoolej)>
 """
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import RidgeClassifier
 
-# from ms_rocket import ms_kernel_fns as ms
-import ms_kernel_fns as ms
+from ms_rocket import ms_kernel_fns as ms
+
 
 
 def gen_LFM_signal(N=1024):
