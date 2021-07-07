@@ -4,19 +4,19 @@ Testing functions for msROCKET. See [1] for details.
 [1] C Lundy & JM O'Toole (2021) 'Random Convolution Kernels with Multi-Scale Decomposition 
 for Preterm EEG Inter-burst Detection' European Signal Poces Conf (EUSIPCO), 2021.
 
-requires: numpy, matplotlib, random, sklearn, ms_rocket
-
+requires: numpy, sklearn, ms_rocket
 
 
 John M. O' Toole, University College Cork
 Started: 06-07-2021
-last update: Time-stamp: <2021-07-06 18:06:59 (otoolej)>
+last update: Time-stamp: <2021-07-07 15:31:56 (otoolej)>
 """
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import RidgeClassifier
 
-import ms_rocket as ms
+# from ms_rocket import ms_kernel_fns as ms
+import ms_kernel_fns as ms
 
 
 def gen_LFM_signal(N=1024):
@@ -37,7 +37,7 @@ def gen_data(N=1024):
 
     # 1. generate LFM signal with additive white-Gaussian noise:
     x = gen_LFM_signal(N)
-    n = np.random.randn(N) * 2.0
+    n = np.random.randn(N) * 1.5
     x += n
     x /= np.std(x)
 
@@ -65,7 +65,7 @@ def gen_data(N=1024):
 
 
 
-def example_ms_rocket():
+def msrocket_example_det_LFM():
     """ example of msROCKET for detection of time-varying sinusoidal components in noise """
 
     # -------------------------------------------------------------------
@@ -106,3 +106,7 @@ def example_ms_rocket():
 
     print('ACCURACY: training={:.3f} | testing={:.3f}'.format(train_acc, acc))
 
+
+
+if __name__ == "__main__":
+    msrocket_example_det_LFM()

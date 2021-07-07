@@ -40,7 +40,7 @@ May work with older versions but not tested.
 
 ## Install
 Options to install:
-+ download the repository and copy the module `src/ms_rocket.py` to where its needed.
++ download the repository and copy the module `ms_rocket/ms_kernel_fns.py` to where its needed.
 + or, download and install an editable version with `pip`:
 
 within this directory, do:
@@ -61,7 +61,7 @@ Generate random kernels and convolve with the input signal
 
 ```python
 import numpy as np
-import ms_rocket as ms
+import ms_kernel_fns as ms
 
 # 1. generate random test signal: 800 segments of length-128
 X = np.random.randn(800, 128)
@@ -85,15 +85,15 @@ frequency-modulated signal in white Gaussian noise.
 Requires `sklearn.linear_model.RidgeRegression` and `sklearn.model_selection.train_test_split`.
 
 
-Taken from the file `src/test_msrocket.py`:
+Taken from the file `ms_rocket/example_msrocket.py`:
 ```python
  """ example of msROCKET for detection of time-varying sinusoidal components in noise """
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import RidgeClassifier
 
-from test_msrocket import gen_data
-import ms_rocket as ms
+from example_msrocket import gen_data
+import ms_kernel_fns as ms
 
 
 # -------------------------------------------------------------------
