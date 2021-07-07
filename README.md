@@ -40,21 +40,14 @@ May work with older versions but not tested.
 
 ## Install
 Options to install:
-+ download the repository and copy the module `ms_rocket/ms_kernel_fns.py` to where its needed.
-+ or, download and install an editable version with `pip`:
 
-within this directory, do:
-```python
-pip3 install -e .
-```
-
-+ or install directly from github
++ Install directly from github using pip:
 
 ```python
 pip3 install git+https://github.com/otoolej/ms_rocket
 ```
 
-
++ Or clone and install the usual way. All functions are contained within `ms_rocket/ms_kernel_fns.py`.
 
 ## Examples
 Generate random kernels and convolve with the input signal
