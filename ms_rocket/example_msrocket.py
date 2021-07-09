@@ -9,7 +9,7 @@ requires: numpy, sklearn, ms_rocket
 
 John M. O' Toole, University College Cork
 Started: 06-07-2021
-last update: Time-stamp: <2021-07-07 15:58:14 (otoolej)>
+last update: Time-stamp: <2021-07-09 17:00:01 (otoolej)>
 """
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -49,7 +49,7 @@ def gen_data(N=1024):
     l_epoch = 128
     overlap = 50
     l_overlap = np.floor(l_epoch * overlap / 100).astype(int)
-    
+
     x_epochs = np.lib.stride_tricks.sliding_window_view(x, l_epoch)[::l_overlap]
     y_epochs = np.lib.stride_tricks.sliding_window_view(y, l_epoch)[::l_overlap]
 

@@ -32,7 +32,7 @@ with details in [1](#references).
 
 ## Requires
 Developed and tested with Python 3.9 and:
-+ NumPy (version 1.19.5)
++ NumPy (version 1.21.0)
 + Numba (version 0.53.1)
 
 May work with older versions but not tested.
