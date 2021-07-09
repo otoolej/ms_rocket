@@ -54,7 +54,7 @@ Generate random kernels and convolve with the input signal
 
 ```python
 import numpy as np
-from ms_kernel import ms_kernel_fns as ms
+from ms_rocket import ms_kernel_fns as ms
 
 # 1. generate random test signal: 800 segments of length-128
 X = np.random.randn(800, 128)
@@ -85,8 +85,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import RidgeClassifier
 
-from ms_kernel_fns.example_msrocket import gen_data
-import ms_kernel_fns as ms
+from ms_rocket.example_msrocket import gen_data
+from ms_rocket import ms_kernel_fns as ms
 
 
 # -------------------------------------------------------------------
