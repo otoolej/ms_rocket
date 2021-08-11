@@ -5,6 +5,7 @@ following reference for more details:
 
 `C Lundy & JM O'Toole (2021) 'Random Convolution Kernels with Multi-Scale Decomposition for
 Preterm EEG Inter-burst Detection' European Signal Processing Conference (EUSIPCO), 2021.`
+[arXiv:2108.02039](https://arxiv.org/abs/2108.02039)
 
 Please cite the above reference if using this code to generate new results.
 
