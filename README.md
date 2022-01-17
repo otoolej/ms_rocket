@@ -3,9 +3,10 @@
 Python code which extends the ROCKET method to include multi-scale decomposition. See
 following reference for more details:
 
-`C Lundy & JM O'Toole (2021) 'Random Convolution Kernels with Multi-Scale Decomposition for
-Preterm EEG Inter-burst Detection' European Signal Processing Conference (EUSIPCO), 2021.`
-[arXiv:2108.02039](https://arxiv.org/abs/2108.02039)
+`C Lundy & JM O'Toole (2021) 'Random Convolution Kernels with Multi-Scale Decomposition
+for Preterm EEG Inter-burst Detection' In 29th European Signal Processing Conference
+(EUSIPCO), 23 Aug 2021. IEEE: pp 1182-1186`
+[DOI: 10.23919/EUSIPCO54536.2021.9616281](https://doi.org/10.23919/EUSIPCO54536.2021.9616281)
 
 Please cite the above reference if using this code to generate new results.
 
@@ -15,7 +16,7 @@ Please cite the above reference if using this code to generate new results.
   title = {Random Convolution Kernels with Multi-Scale Decomposition for Preterm {EEG} Inter-burst Detection},
   booktitle = {European Signal Processing Conference (EMBC)},
   month = {aug},
-  pages = {1--5},
+  pages = {1182--1186},
   publisher = {IEEE},
   year = {2021},
 }
